@@ -15,7 +15,6 @@ module.exports = {
     loaders: [
       { test: /\.sass$/, loader: "style!css!sass?indentedSyntax" },
       { test: /\.html/, loader: 'file?name=[name].[ext]' },
-      { test: /\.js/, loader: '/js/file?name=[name].[ext]' },
       { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader' }
     ]
   },

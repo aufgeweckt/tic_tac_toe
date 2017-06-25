@@ -17,7 +17,75 @@
 	</div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>	
-	<script src="/js/core.js"></script>	
+	<script>
+
+			(function($){
+				$.fn.tictactoe = function(options) {
+
+					// default settings
+					var settings = $.extend({
+
+						//player 
+						player1: 'x',
+						player2: 'o',
+						currentPlayer: 'o',
+
+						// notifications
+						p1wins: 'Player1 wins - Congratulation',
+						p2wins: 'Player2 wins - Congratulation',
+						draw: 'The  game ist draws'
+
+					}, options);
+
+					// constructor
+					var plugin = this;
+					var init = function() {
+						plugin.tictactoe();
+					}
+					
+					// medothes
+					this.tictactoe =  function() {
+
+						// change current player / set x and o into fields
+						$('.field').click(function(){
+							if($(this).hasClass('blocked')) {
+								alert('this field is blocked');
+							} else {
+								$(this).addClass('blocked');
+								if(settings.currentPlayer == "x") {
+									settings.currentPlayer = "o";
+									$(this).append(settings.currentPlayer);
+
+									}  else if(settings.currentPlayer == "o") {
+										settings.currentPlayer = "x";
+										$(this).append(settings.currentPlayer);
+									} 
+							}
+								 
+						});
+
+						// who wins? 
+						
+
+
+						// game ends in 9 turns
+
+					
+
+
+					}
+
+					// constructor init
+					init();
+					return this;
+				}
+			
+			} (jQuery));
+
+			$(document).ready(function(){
+				$('.field-container').tictactoe();
+			});
+	</script>	
 	<script src="bundle.js" type="text/javascript"></script>
 </body>
 </html>
